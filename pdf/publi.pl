@@ -6,6 +6,25 @@ use strict;
 
 
 my $file = `ls | grep pdf`; #pega nome do arquivo
+my $num;
+open CONF, "< config.txt";
+while(<CONF>){
+    $num = $_;
+    print "oo numero: $num";
+}
+close CONF;
+#open NEWCONF, " > config.txt";
+#select NEWCONF;
+#print $num +1;
+#close NEWCONF;
+
+my $url = "http://www3.tjma.jus.br:8080/diario/VisulizacaoDiarioPDF.mtw?idDiario=".$num;
+
+system('wget '.$url);
+
+#die "URL inexistente" unless $result == 0;
+
+system("mv VisulizacaoDiarioPDF.mtw?idDiario=$num diarioTJ.pdf");
 
 system('pdftotext -raw -enc UTF-8 '.$file); #transforma pdf em txt para leitura
 $file =~ s/pdf/txt/;        #passa-se a lidar com o arquivo em txt
