@@ -3,7 +3,7 @@
 $, = "\n\n";
 
 use strict;
-use warnings;
+
 
 my $stalkeado = shift;
 my $info = `rwho | grep $stalkeado`;
