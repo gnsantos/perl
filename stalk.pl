@@ -2,6 +2,7 @@
 
 $, = "\n\n";
 
+use warnings;
 use strict;
 
 
